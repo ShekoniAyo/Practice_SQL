@@ -1,7 +1,7 @@
 SELECT *
 FROM my_practice_table;
 
--- Total number of orders in the table
+-- Total number of orders
 SELECT COUNT(*) AS [Total Orders]
 FROM my_practice_table;
 
@@ -11,7 +11,7 @@ FROM my_practice_table
 GROUP BY [Product Name]
 ORDER BY COUNT(*) DESC;
 
--- Total sales for each company along with the number of orders
+-- Total sales for each customer(company) along with the number of orders
 SELECT DISTINCT [Company Name], COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Total Sales]
 FROM my_practice_table
 GROUP BY [Company Name]
