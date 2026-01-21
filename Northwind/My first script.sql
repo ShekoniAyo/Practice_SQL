@@ -1,4 +1,5 @@
---CREATE OR ALTER VIEW my_order_table AS
+-- This is the script used to create the table I would be using for this practice...
+CREATE OR ALTER VIEW my_practice_table AS
 SELECT 
 o.OrderID AS [Order ID],
 p.ProductName AS [Product Name],
@@ -23,3 +24,7 @@ JOIN Shippers s ON o.ShipVia = s.ShipperID
 JOIN [Order Details] od ON o.OrderID = od.OrderID
 JOIN Products p ON od.ProductID = p.ProductID
 JOIN Categories cat ON p.CategoryID = cat.CategoryID
+
+-- To view the table;
+SELECT *
+FROM my_practice_table;
