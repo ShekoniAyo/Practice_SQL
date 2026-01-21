@@ -12,10 +12,10 @@ GROUP BY [Product Name]
 ORDER BY COUNT(*) DESC, SUM([Total Price]) DESC;
 
 -- Total sales for each customer(company) along with the number of orders
-SELECT DISTINCT [Company Name], COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Total Sales]
+SELECT DISTINCT [Company Name],  COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Total Sales]
 FROM my_practice_table
 GROUP BY [Company Name]
-ORDER BY COUNT(*) DESC, SUM([Total Price]) DESC;
+ORDER BY COUNT(*) DESC , SUM([Total Price]) DESC;
 
 -- Total number of orders handled by each employee and the amount of sales they generated
 SELECT DISTINCT [Employee Name], COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Total Sales]
