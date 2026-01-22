@@ -6,25 +6,25 @@ SELECT COUNT(*) AS [Total Orders]
 FROM my_practice_table;
 
 -- Total number of orders for each product and its turnover
-SELECT DISTINCT [Product Name], COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Turnover]
+SELECT DISTINCT [Product Name], COUNT(*) AS [No. of Orders], '$' + CAST(SUM([Total Price]) AS NVARCHAR) AS [Turnover]
 FROM my_practice_table
 GROUP BY [Product Name]
-ORDER BY COUNT(*) DESC, SUM([Total Price]) DESC;
+ORDER BY COUNT(*) DESC, [Turnover] DESC;
 
 -- Total sales for each customer(company) along with the number of orders
-SELECT DISTINCT [Company Name],  COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Total Sales]
+SELECT DISTINCT [Company Name],  COUNT(*) AS [No. of Orders], '$' + CAST(SUM([Total Price]) AS NVARCHAR) AS [Total Sales]
 FROM my_practice_table
 GROUP BY [Company Name]
-ORDER BY COUNT(*) DESC , SUM([Total Price]) DESC;
+ORDER BY COUNT(*) DESC , [Total Sales] DESC;
 
 -- Total number of orders handled by each employee and the amount of sales they generated
-SELECT DISTINCT [Employee Name], COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Total Sales]
+SELECT DISTINCT [Employee Name], COUNT(*) AS [No. of Orders], '$' + CAST(SUM([Total Price]) AS NVARCHAR) AS [Total Sales]
 FROM my_practice_table
 GROUP BY [Employee Name]
-ORDER BY COUNT(*) DESC, SUM([Total Price]) DESC;
+ORDER BY COUNT(*) DESC, [Total Sales] DESC;
 
 -- Total number of orders for each category
-SELECT DISTINCT [Category], COUNT(*) AS [No. of Orders], SUM([Total Price]) AS [Turnover]
+SELECT DISTINCT [Category], COUNT(*) AS [No. of Orders], '$' + CAST(SUM([Total Price]) AS NVARCHAR) AS [Turnover]
 FROM my_practice_table
 GROUP BY [Category]
 ORDER BY COUNT(*) DESC;
@@ -46,7 +46,7 @@ FROM my_practice_table
 WHERE [Delivery Date] IS NULL;
 
 -- Overall turnover from all orders
-SELECT SUM([Total Price]) AS [Overall Turnover]
+SELECT '$' + CAST(SUM([Total Price]) AS NVARCHAR) AS [Overall Turnover]
 FROM my_practice_table;
 
 -- List of years in which deliveries were made
