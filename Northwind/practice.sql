@@ -1,6 +1,10 @@
 SELECT *
 FROM my_practice_table;
 
+SELECT *
+FROM my_practice_table
+WHERE [Customer Address] LIKE '%Switzerland%';
+
 -- Total number of orders
 SELECT COUNT(*) AS [Total Orders]
 FROM my_practice_table;
@@ -10,6 +14,12 @@ SELECT DISTINCT [Product Name], COUNT(*) AS [No. of Orders], '$' + CAST(SUM([Tot
 FROM my_practice_table
 GROUP BY [Product Name]
 ORDER BY COUNT(*) DESC, [Turnover] DESC;
+
+-- Average quantity ordered for each product
+SELECT DISTINCT [Product Name], AVG([Quantity]) AS [Average Quantity Ordered]
+FROM my_practice_table
+GROUP BY [Product Name]
+ORDER BY [Average Quantity Ordered] DESC;
 
 -- Total sales for each customer(company) along with the number of orders
 SELECT DISTINCT [Company Name],  COUNT(*) AS [No. of Orders], '$' + CAST(SUM([Total Price]) AS NVARCHAR) AS [Total Sales]
@@ -23,11 +33,17 @@ FROM my_practice_table
 GROUP BY [Employee Name]
 ORDER BY COUNT(*) DESC, [Total Sales] DESC;
 
--- Total number of orders for each category
+-- Total number of orders for each category and the amount of turnover generated
 SELECT DISTINCT [Category], COUNT(*) AS [No. of Orders], '$' + CAST(SUM([Total Price]) AS NVARCHAR) AS [Turnover]
 FROM my_practice_table
 GROUP BY [Category]
 ORDER BY COUNT(*) DESC;
+
+-- Average turnover for each category
+SELECT DISTINCT [Category], AVG([Total Price]) AS [Average Turnover]
+FROM my_practice_table
+GROUP BY [Category]
+ORDER BY [Average Turnover] DESC;
 
 -- Total number of orders shipped by each shipping company
 SELECT DISTINCT [Shipping Company], COUNT(*) AS [No. of Orders]
